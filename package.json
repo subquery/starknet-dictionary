@@ -1,0 +1,38 @@
+{
+  "name": "starknet-dictionary",
+  "version": "0.0.1",
+  "description": "This project can be use as a starting point for developing your new Starknet SubQuery project",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "subql codegen && subql build",
+    "codegen": "subql codegen",
+    "start:docker": "docker-compose pull && docker-compose up --remove-orphans",
+    "dev": "subql codegen && subql build && docker-compose pull && docker-compose up --remove-orphans",
+    "prepack": "rm -rf dist && npm run build",
+    "test": "subql build && subql-node-ethereum test",
+    "build:develop": "NODE_ENV=develop subql codegen && NODE_ENV=develop subql build"
+  },
+  "homepage": "https://github.com/subquery/ethereum-subql-starter",
+  "repository": "github:subquery/ethereum-subql-starter",
+  "files": [
+    "dist",
+    "schema.graphql",
+    "project.yaml"
+  ],
+  "author": "SubQuery Team",
+  "license": "MIT",
+  "dependencies": {
+    "@subql/common-starknet": "0.0.2-2",
+    "@subql/types-starknet": "0.0.2-2",
+    "@types/lodash": "^4.17.14",
+    "assert": "^2.0.0",
+    "lodash": "^4.17.21",
+    "starknet": "latest"
+  },
+  "devDependencies": {
+    "@subql/cli": "5.4.1-1",
+    "@subql/testing": "latest",
+    "dotenv": "latest",
+    "typescript": "latest"
+  }
+}

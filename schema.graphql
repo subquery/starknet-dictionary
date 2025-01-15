@@ -1,0 +1,22 @@
+# To improve query performance, we strongly suggest adding indexes to any field that you plan to filter or sort by
+# Add the `@index` or `@index(unique: true)` annotation after any non-key field
+# https://academy.subquery.network/build/graphql.html#indexing-by-non-primary-key-field
+
+type Call @entity {
+  id: ID!
+  txHash: String! @index
+  # contractAddress or from
+  from: String! @index
+  to: String @index
+  # Selector for INVOKE CALLS or entryPointSelector for L1Handler
+  selector: String @index
+  type: String @index
+  blockHeight: BigInt! @index
+}
+
+type Log @entity {
+  id: ID!
+  address: String! @index
+  blockHeight: BigInt! @index
+  topics: [String] @index
+}
